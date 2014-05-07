@@ -56,8 +56,7 @@ class KedInit {
      */
     public function load()
     {
-        //fdfdfdfd
-
+        //dewid commit
         KedLoader::create()
             ->load(
                 KedRouter::create()
