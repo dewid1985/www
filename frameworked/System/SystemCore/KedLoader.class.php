@@ -14,7 +14,7 @@ namespace System\SystemCore;
  */
 class KedLoader extends FrameworkKed {
 
-    public function load(KedRouter $router )
+    public function loadController(KedRouter $router)
     {
         if(file_exists(APP_CONTROLLERS_PATH.$router->getController().'.controller.php'))
         {

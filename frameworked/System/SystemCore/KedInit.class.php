@@ -14,14 +14,15 @@ namespace System\SystemCore;
  * Class kedInit
  * @package System\SystemCore
  */
-class KedInit {
+class KedInit
+{
     /**
      * @return KedInit
      */
     public static function create()
     {
-        spl_autoload_register(array(__CLASS__ , 'loaderFrameworkKedClass'));
-        spl_autoload_register(array(__CLASS__ , 'loaderFrameworkKedInterface'));
+        spl_autoload_register(array(__CLASS__, 'loaderFrameworkKedClass'));
+        spl_autoload_register(array(__CLASS__, 'loaderFrameworkKedInterface'));
         return new self();
     }
 
@@ -32,7 +33,7 @@ class KedInit {
      */
     public static function loaderFrameworkKedClass($class)
     {
-        $class = FRAMPATH.str_replace('\\' , '/' , $class) . '.class.php';
+        $class = FRAMPATH . str_replace('\\', '/', $class) . '.class.php';
         if (file_exists($class)) {
             require($class);
         }
@@ -45,7 +46,7 @@ class KedInit {
      */
     public static function loaderFrameworkKedInterface($interface)
     {
-        $interface = FRAMPATH.str_replace('\\' , '/' , $interface) . '.interface.php';
+        $interface = FRAMPATH . str_replace('\\', '/', $interface) . '.interface.php';
         if (file_exists($interface)) {
             require($interface);
         }
@@ -56,19 +57,18 @@ class KedInit {
      */
     public function load()
     {
-        //dewid commit
         KedLoader::create()
             ->load(
                 KedRouter::create()
                     ->setRouterUri(
                         KedUri::create()
                             ->setUrl()
-                        )
+                    )
                     ->setRouterConfig(
-                            KedConfig::create()
-                                ->loadConfig('Router')
-                        )
+                        KedConfig::create()
+                            ->loadConfig('Router')
+                    )
                     ->initRouter()
             );
     }
-} 
+}
